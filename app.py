@@ -1,4 +1,6 @@
 import streamlit as st
+from Source.Inference import Loan_Default_prediction
+
 
 st.title('Loan Default Prediction')
 
@@ -32,10 +34,13 @@ with col3:
 
 is_verified = st.selectbox('Is verified', options=['missing', 'Source Verified', 'Verified', 'Not Verified'])
 
-value = {'Amount': loan_amount, 'Interest Rate': rate, 'Tenure(years)': tenure, 'Employmet type': employ_type, 'Tier of Employment': tier_employ, 'Work Experience': experience, 'Total Income(PA)': total_income, 'Gender': gender, 'Married': married, 'Dependents': dependents, 'Home': home, 'Social Profile': social_profile, 'Number of loans': no_of_loans, 'Interest Received': interest_reccived, 'Total Payement ': total_payment,'Received Principal': reccived_payment, 'Delinq_2yrs': deling_2ys, 'Is_verified': is_verified}
+value = {'Loan Category':loan_category, 'Amount': loan_amount, 'Interest Rate': rate, 'Tenure(years)': tenure, 'Employmet type': employ_type, 'Tier of Employment': tier_employ, 'Work Experience': experience, 'Total Income(PA)': total_income, 'Gender': gender, 'Married': married, 'Dependents': dependents, 'Home': home, 'Social Profile': social_profile, 'Number of loans': no_of_loans, 'Interest Received': interest_reccived, 'Total Payement ': total_payment,'Received Principal': reccived_payment, 'Delinq_2yrs': deling_2ys, 'Is_verified': is_verified}
 submit_button = st.button(label='Prediction', type='primary')
 if submit_button:
-    st.write(value)
+    loan = Loan_Default_prediction(value)
+    text = loan.predict()
+    st.write(text)
+
 def main():
     pass
 
