@@ -23,15 +23,16 @@ with col2:
     home = st.selectbox('Home', options=['rent', 'mortgage', 'own', 'none', 'other'])
 
 with col3:
-    social_profile = st.selectbox
+    social_profile = st.selectbox('Social Profile', options=['No', 'missing', 'Yes'])
     no_of_loans = st.number_input('No. of Loans', min_value=0, max_value=10)
     interest_reccived = st.number_input('Interest Received', min_value=0., max_value=25000.00, format="%.2f")
     total_payment = st.number_input('Total Payment', min_value=0.0, max_value=60000.00, format="%.2f")
     reccived_payment = st.number_input('Received payment', min_value=0., max_value=25000.00, format="%.2f")
     deling_2ys = st.number_input('Number of delinquencies', min_value=0, max_value=20)
-    is_verified = st.selectbox('Is verified', options=['missing', 'Source Verified', 'Verified', 'Not Verified'])
 
-value = {}
+is_verified = st.selectbox('Is verified', options=['missing', 'Source Verified', 'Verified', 'Not Verified'])
+
+value = {'Amount': loan_amount, 'Interest Rate': rate, 'Tenure(years)': tenure, 'Employmet type': employ_type, 'Tier of Employment': tier_employ, 'Work Experience': experience, 'Total Income(PA)': total_income, 'Gender': gender, 'Married': married, 'Dependents': dependents, 'Home': home, 'Social Profile': social_profile, 'Number of loans': no_of_loans, 'Interest Received': interest_reccived, 'Total Payement ': total_payment,'Received Principal': reccived_payment, 'Delinq_2yrs': deling_2ys, 'Is_verified': is_verified}
 submit_button = st.button(label='Prediction', type='primary')
 if submit_button:
     st.write(value)
